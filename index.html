@@ -11,12 +11,12 @@
       <p id="timeLeft">10</p>
     </header>
     <main>
-      <div class="display">
+      <div class="mainDisplay">
         <h1 class="heading">Coding Quiz Game</h1>
         <p class="para">Welcome to my game friend</p>
       </div>
-      <div class="gameGUI">
-        <section id="answerButtons" data-state="hidden">
+      <div class="gameGUI" data-state="shown">
+        <section id="answerButtons">
           <button class="answer" id="a1">1</button>
           <button class="answer" id="a2">2</button>
           <button class="answer" id="a3">3</button>
@@ -29,7 +29,7 @@
           <button id="submit">submit</button>
         </section>
         <section id="navButtons">
-          <button class="naviBtn" id="playMenu">Play</button>
+          <button class="naviBtn" id="playMenu" data-state="play">Play</button>
           <button class="naviBtn" id="scoreOrReset">Highscore</button>
         </section>
       </div>
