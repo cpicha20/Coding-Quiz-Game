@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coding Quiz Game</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
     <header>
-        <p id="timeLeft">10</p>
+      <p id="timeLeft">10</p>
     </header>
     <main>
+      <div class="display">
         <h1 class="heading">Coding Quiz Game</h1>
-        <p class="">Welcome to my game friend</p>
+        <p class="para">Welcome to my game friend</p>
+      </div>
+      <div class="gameGUI">
         <section id="answerButtons" data-state="hidden">
-            <button class="answer" id="a1">1</button>
-            <button class="answer" id="a2">2</button>
-            <button class="answer" id="a3">3</button>
-            <button class="answer" id="a4">4</button>
+          <button class="answer" id="a1">1</button>
+          <button class="answer" id="a2">2</button>
+          <button class="answer" id="a3">3</button>
+          <button class="answer" id="a4">4</button>
         </section>
+      </div>
+      <div id="menuGUI">
         <section id="leaderBoard">
-            <input type="text">
-            <button id="submit">submit</button>
+          <input type="text" />
+          <button id="submit">submit</button>
         </section>
         <section id="navButtons">
-            <button class="naviBtn" id="playMenu">Play</button>
-            <button class="naviBtn" id="scoreOrReset">Highscore</button>
+          <button class="naviBtn" id="playMenu">Play</button>
+          <button class="naviBtn" id="scoreOrReset">Highscore</button>
         </section>
+      </div>
     </main>
     <script src="./assets/js/script.js"></script>
-</body>
+  </body>
 </html>
