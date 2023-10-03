@@ -10,7 +10,18 @@ var questionCount = 0; //for finding out how many questions are left so we can e
 var timer = 0;
 
 //Questions/Answers array of objects
-var qaArray = [];
+var qaArray = [
+  {
+    question: "Question 1",
+    CorrectA: "yes",
+    PossibleA: ["yes", "no","maybe","say it aint so"],
+  },
+  {
+    question: "Question 2",
+    CorrectA: "no",
+    PossibleA: ["yes", "no","maybe","say it aint so"],
+  },
+];
 
 //
 var leaderboard = [];
@@ -26,7 +37,7 @@ function toggleGUI(param) {
 }
 
 function countdown() {
-    timer=3;
+  timer = 90;
 
   var timerInterval = setInterval(function () {
     timer--;
@@ -43,22 +54,28 @@ function countdown() {
 }
 
 function playGame() {
-   if (playMenu.dataset.state ==="menu"){
+  if (playMenu.dataset.state === "menu") {
     playMenu.textContent = "Play";
     playMenu.dataset.state = "play";
     toggleGUI(lboard);
     console.log(lboard.dataset.state);
+  } else {
+    toggleGUI(gGUI);
+    toggleGUI(mGUI);
+    toggleGUI(tLeft);
+    countdown();
+    tLeft.textContent = timer;
+    playMenu.textContent = "Menu";
+    playMenu.dataset.state = "menu";
+
+    var mD=document.querySelector(".mainDisplay");
+    var currentQuestion= Math.floor(Math.random()*qaArray.length)
+    mD.textContent = qaArray[currentQuestion].question;
+    for (let i = 0; i < qaArray[currentQuestion].PossibleA.length; i++) {
+        document.querySelector(`#a${i+1}`).textContent= qaArray[currentQuestion].PossibleA[i];  
+    }
   }
-  else{
-  toggleGUI(gGUI);
-  toggleGUI(mGUI);
-  toggleGUI(tLeft);
-  countdown();
-  tLeft.textContent = timer;
-  playMenu.textContent = "Menu";
-  playMenu.dataset.state = "menu";
-  
- }
 }
+
 
 playMenu.addEventListener("click", playGame);
