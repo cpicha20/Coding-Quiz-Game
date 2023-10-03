@@ -8,18 +8,59 @@ var lboard = document.querySelector("#leaderboard");
 var currentQuestion = 0;
 var questionCount = 0; //for finding out how many questions are left so we can end the game if we've done
 var timer = 0;
+var mD = document.querySelector(".mainDisplay");
 
 //Questions/Answers array of objects
 var qaArray = [
   {
     question: "Question 1",
-    CorrectA: "yes",
-    PossibleA: ["yes", "no","maybe","say it aint so"],
+    CorrectA: "no",
+    PossibleA: ["yes", "no", "maybe", "say it aint so"],
   },
   {
     question: "Question 2",
     CorrectA: "no",
-    PossibleA: ["yes", "no","maybe","say it aint so"],
+    PossibleA: ["yes", "no", "maybe", "say it aint so"],
+  },
+  {
+    question: "Question 3",
+    CorrectA: "no",
+    PossibleA: ["yes", "no", "maybe", "say it aint so"],
+  },
+  {
+    question: "Question 4",
+    CorrectA: "no",
+    PossibleA: ["yes", "no", "maybe", "say it aint so"],
+  },
+  {
+    question: "Question 5",
+    CorrectA: "no",
+    PossibleA: ["yes", "no", "maybe", "say it aint so"],
+  },
+  {
+    question: "Question 6",
+    CorrectA: "no",
+    PossibleA: ["yes", "no", "maybe", "say it aint so"],
+  },
+  {
+    question: "Question 7",
+    CorrectA: "no",
+    PossibleA: ["yes", "no", "maybe", "say it aint so"],
+  },
+  {
+    question: "Question 8",
+    CorrectA: "no",
+    PossibleA: ["yes", "no", "maybe", "say it aint so"],
+  },
+  {
+    question: "Question 9",
+    CorrectA: "no",
+    PossibleA: ["yes", "no", "maybe", "say it aint so"],
+  },
+  {
+    question: "Question 10",
+    CorrectA: "no",
+    PossibleA: ["yes", "no", "maybe", "say it aint so"],
   },
 ];
 
@@ -53,6 +94,20 @@ function countdown() {
   }, 1000);
 }
 
+function nextQuestion() {
+  
+    timerInterval = setInterval(function () {
+    document.querySelector("#resultMessage").textContent = "";
+    currentQuestion = Math.floor(Math.random() * qaArray.length);
+    mD.textContent = qaArray[currentQuestion].question;
+    for (let i = 0; i < qaArray[currentQuestion].PossibleA.length; i++) {
+      document.querySelector(`#a${i + 1}`).textContent = qaArray[currentQuestion].PossibleA[i];
+    }
+    clearInterval(timerInterval);
+  }, 1300);
+
+}
+
 function playGame() {
   if (playMenu.dataset.state === "menu") {
     playMenu.textContent = "Play";
@@ -68,14 +123,25 @@ function playGame() {
     playMenu.textContent = "Menu";
     playMenu.dataset.state = "menu";
 
-    var mD=document.querySelector(".mainDisplay");
-    var currentQuestion= Math.floor(Math.random()*qaArray.length)
+    currentQuestion = Math.floor(Math.random() * qaArray.length);
     mD.textContent = qaArray[currentQuestion].question;
     for (let i = 0; i < qaArray[currentQuestion].PossibleA.length; i++) {
-        document.querySelector(`#a${i+1}`).textContent= qaArray[currentQuestion].PossibleA[i];  
+      document.querySelector(`#a${i + 1}`).textContent = qaArray[currentQuestion].PossibleA[i];
     }
   }
 }
 
+document.querySelector("#answerButtons").addEventListener("click", function (event) {
+  console.log(event.target.textContent);
+  console.log(qaArray[currentQuestion].CorrectA);
+  if (event.target.textContent === qaArray[currentQuestion].CorrectA) {
+    console.log("correct");
+    document.querySelector("#resultMessage").textContent = "Thats Right!";
+  } else {
+    console.log("wrong");
+    document.querySelector("#resultMessage").textContent = "Thats Wrong.";
+  }
+  nextQuestion();
+});
 
 playMenu.addEventListener("click", playGame);
