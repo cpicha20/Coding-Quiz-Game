@@ -3,10 +3,11 @@ var navBTN = document.querySelector("#navButtons");
 var playMenu = document.querySelector("#playMenu");
 var mGUI = document.querySelector("#menuGUI");
 var tLeft = document.querySelector("#timeLeft");
+var lboard = document.querySelector("#leaderboard");
 
 var currentQuestion = 0;
 var questionCount = 0; //for finding out how many questions are left so we can end the game if we've done
-var timer = 60;
+var timer = 0;
 
 //Questions/Answers array of objects
 var qaArray = [];
@@ -25,24 +26,39 @@ function toggleGUI(param) {
 }
 
 function countdown() {
-    var timerInterval = setInterval(function() {
-        timer--;
-        tLeft.textContent = timer;
-      }, 1000); 
-    
+    timer=3;
+
+  var timerInterval = setInterval(function () {
+    timer--;
+    tLeft.textContent = timer;
+    if (timer === 0) {
+      // Stops execution of action at set interval
+      clearInterval(timerInterval);
+      toggleGUI(gGUI);
+      toggleGUI(mGUI);
+      toggleGUI(lboard);
+      toggleGUI(tLeft);
+    }
+  }, 1000);
 }
 
 function playGame() {
-    console.log(mGUI.dataset.state);
-    tLeft.textContent = timer;
-    toggleGUI(gGUI);
-    toggleGUI(mGUI);
-    toggleGUI(tLeft);
-    countdown();
-    
-  
+   if (playMenu.dataset.state ==="menu"){
+    playMenu.textContent = "Play";
+    playMenu.dataset.state = "play";
+    toggleGUI(lboard);
+    console.log(lboard.dataset.state);
+  }
+  else{
+  toggleGUI(gGUI);
+  toggleGUI(mGUI);
+  toggleGUI(tLeft);
+  countdown();
+  tLeft.textContent = timer;
   playMenu.textContent = "Menu";
+  playMenu.dataset.state = "menu";
+  
+ }
 }
 
- console.log(tLeft.dataset.state);
 playMenu.addEventListener("click", playGame);
