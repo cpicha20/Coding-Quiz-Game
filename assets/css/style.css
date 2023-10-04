@@ -26,11 +26,13 @@ body{
     color: white;
 }
 
+/* hides answer buttons */
 #gameGUI{
     display: none;
     
 }
 
+/* instruction text */
 .para{
     background-color: blueviolet;
     color: white;
@@ -40,6 +42,7 @@ body{
     line-height: 1.5;
 }
 
+/* displays welcome message/question */
 .mainDisplay{
     margin: auto;
     background-color: blueviolet;
@@ -51,7 +54,7 @@ body{
 }
 
 
-
+/* answer buttons */
 .answer {
     display: block;
     width: 500px;
@@ -74,6 +77,7 @@ body{
     color: azure;
 }
 
+/* hides input/ submit button */
 #leaderboard{
     display: none;
     margin-top: 10px;
@@ -85,6 +89,7 @@ input{
 
 }
 
+/* submit inpt name button */
 #submit{
     width: 100px;
     margin-right: 20px;
@@ -101,7 +106,7 @@ input{
     border-color: blueviolet;
 }
 
-
+/* menu/highscore buttons */
 .naviBtn{
     width: 200px;
     margin-right: 20px;
@@ -123,6 +128,7 @@ input{
     color: azure;
 }
 
+/* hides highscores */
 #list-container{
     display: none;
 }

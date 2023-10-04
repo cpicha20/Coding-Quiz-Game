@@ -217,7 +217,7 @@ function eraseMsg() {
   }, 1300);
 }
 
-//next question
+//Proceed to the next question 
 function nextQuestion() {
   mD.textContent = qaArray[currentQuestion].question;
 
@@ -226,6 +226,7 @@ function nextQuestion() {
   }
 }
 
+//submit user name and score to the leaderboard localStorage
 scoreSubmit.addEventListener("click", function () {
   var submission = {};
   if (nameInput.value != "") {
@@ -250,9 +251,11 @@ scoreSubmit.addEventListener("click", function () {
   toggleGUI(lboard);
 });
 
+//Display highscore screen
 SoR.addEventListener("click", function () {
   if (SoR.dataset.state === "reset") {
     localStorage.clear();
+    container.innerHTML ="";
   } else {
 
     var storedData = localStorage.getItem("topScores");

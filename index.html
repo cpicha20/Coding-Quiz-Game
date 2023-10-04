@@ -7,24 +7,31 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
+    <!-- shows the timer -->
     <header>
       <p id="timeLeft" data-state="hidden"></p>
     </header>
     <main>
+      <!-- displays menu along with question prompts-->
       <div class="mainDisplay">
         <h1 class="heading">Coding Quiz Game</h1>
-        <p class="para">Welcome to my game, friend!<br> Try to answer as many questions as you can before the timer runs out!<br>
-            Wrong answers will deduct both points and time <br>
-        See if you can get the Highscore! </p>
+        <p class="para">
+          Welcome to my game, friend!<br />
+          Try to answer as many questions as you can before the timer runs out!<br />
+          Wrong answers will deduct both points and time <br />
+          See if you can get the Highscore!
+        </p>
       </div>
+      <!-- displays the answer buttons -->
       <div id="gameGUI" data-state="hidden">
-            <button class="answer" id="a1">1</button>
-            <button class="answer" id="a2">2</button>
-            <button class="answer" id="a3">3</button>
-            <button class="answer" id="a4">4</button>
+        <button class="answer" id="a1">1</button>
+        <button class="answer" id="a2">2</button>
+        <button class="answer" id="a3">3</button>
+        <button class="answer" id="a4">4</button>
       </div>
-      <div id="list-container" data-state="hidden">
-      </div>
+      <!-- Highscore Menu -->
+      <div id="list-container" data-state="hidden"></div>
+      <!-- displays non answer interaction buttons -->
       <div id="menuGUI" data-state="shown">
         <section id="leaderboard" data-state="hidden">
           <input id="nameEntry" type="text" />
@@ -35,7 +42,7 @@
           <button class="naviBtn" id="scoreOrReset" data-state="score">Highscore</button>
         </section>
       </div>
-
+      <!-- shows right/wrong message after an answer -->
       <p id="resultMessage"></p>
     </main>
     <script src="./assets/js/script.js"></script>
