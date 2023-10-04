@@ -237,10 +237,12 @@ scoreSubmit.addEventListener("click", function () {
     submission.score = points;
   }
 
+  
   leaderboard.push(submission);
   leaderboard.sort((a, b) => b.score - a.score);
 
-  if (localStorage.getItem("top Scores") === null) {
+  //Checking in local storage if its empty 
+  if (localStorage.getItem("topScores") === null) {
     var jsonString = JSON.stringify(leaderboard);
     localStorage.setItem("topScores", jsonString);
   } else {
