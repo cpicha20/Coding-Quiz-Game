@@ -32,7 +32,7 @@ var qaArray = [
     PossibleA: [
       "Data Object Model",
       "Digital Object Model",
-      "Dynamic Object Manipulation",
+      "Document Object Model",
       "Document Object Mapping",
     ],
   },
@@ -48,7 +48,7 @@ var qaArray = [
       "Computer Style Sheets",
       "Creative Style Sheets",
       "Colorful Style Sheets",
-      "Cascading Script Styles",
+      "Cascading Style Sheets",
     ],
   },
   {
@@ -146,8 +146,12 @@ function playGame() {
     mD.textContent = title;
     playMenu.textContent = "Play";
     playMenu.dataset.state = "play";
-    toggleGUI(lboard);
-    console.log(lboard.dataset.state);
+
+    if (lboard.dataset.state === "shown") {
+      toggleGUI(lboard);
+    }if (document.querySelector("#list-container").dataset.state === "shown") {
+        toggleGUI(document.querySelector("#list-container"));
+      }
   } else {
     par.textContent = "";
     points = 0;
@@ -224,31 +228,59 @@ function nextQuestion() {
 
 scoreSubmit.addEventListener("click", function () {
   var submission = {};
-  console.log(nameInput.value);
   if (nameInput.value != "") {
     submission.name = nameInput.value;
     submission.score = points;
   }
-  console.log(submission);
-  leaderboard.push(submission);
-  console.log(leaderboard);
-  leaderboard.sort((a, b) => b.score - a.score);  
-  const jsonString = JSON.stringify(leaderboard);
-  localStorage.setItem("topScores", jsonString);
 
+  leaderboard.push(submission);
+  leaderboard.sort((a, b) => b.score - a.score);
+
+  if (localStorage.getItem("top Scores") === null) {
+    var jsonString = JSON.stringify(leaderboard);
+    localStorage.setItem("topScores", jsonString);
+  }
+  else{
+  var storedData = localStorage.getItem("topScores");
+  var retrievedArray = JSON.parse(storedData);
+  retrievedArray.push(leaderboard);
+  var jsonString = JSON.stringify(retrievedArray);
+    localStorage.setItem("topScores", jsonString);
+  }
+  toggleGUI(lboard);
 });
 
 SoR.addEventListener("click", function () {
+  if (SoR.dataset.state === "reset") {
+    localStorage.clear();
+  } else {
 
-const storedData = localStorage.getItem("myData");
+    var storedData = localStorage.getItem("topScores");
+    var retrievedArray = JSON.parse(storedData);
 
+    var container = document.querySelector("#list-container");
+    toggleGUI(container);
+    
+    var listHTML = "<ul>";
 
-const retrievedArray = JSON.parse(storedData);
+    if (retrievedArray != null) {
+      for (var item of retrievedArray) {
+        var itemName = item.name;
+        var itemScore = item.score;
 
+        listHTML += `<li>
+      <strong>Name:</strong> ${itemName}
+      <strong>Score:</strong> ${itemScore}
+    </li>`;
+      }
 
-console.log(retrievedArray);
+      listHTML += "</ul>";
+      container.innerHTML = listHTML;
+    }
 
-
+    SoR.dataset.state = "reset";
+    SoR.textContent = "Reset Scores";
+  }
 });
 
 playMenu.addEventListener("click", playGame);

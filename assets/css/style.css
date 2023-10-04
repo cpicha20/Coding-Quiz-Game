@@ -123,3 +123,6 @@ input{
     color: azure;
 }
 
+#list-container{
+    display: none;
+}
