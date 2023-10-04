@@ -146,13 +146,13 @@ function playGame() {
     mD.textContent = title;
     playMenu.textContent = "Play";
     playMenu.dataset.state = "play";
-    
 
     if (lboard.dataset.state === "shown") {
       toggleGUI(lboard);
-    }if (document.querySelector("#list-container").dataset.state === "shown") {
-        toggleGUI(document.querySelector("#list-container"));
-      }
+    }
+    if (document.querySelector("#list-container").dataset.state === "shown") {
+      toggleGUI(document.querySelector("#list-container"));
+    }
   } else {
     par.textContent = "";
     points = 0;
@@ -220,7 +220,7 @@ function eraseMsg() {
   }, 1300);
 }
 
-//Proceed to the next question 
+//Proceed to the next question
 function nextQuestion() {
   mD.textContent = qaArray[currentQuestion].question;
 
@@ -243,12 +243,11 @@ scoreSubmit.addEventListener("click", function () {
   if (localStorage.getItem("top Scores") === null) {
     var jsonString = JSON.stringify(leaderboard);
     localStorage.setItem("topScores", jsonString);
-  }
-  else{
-  var storedData = localStorage.getItem("topScores");
-  var retrievedArray = JSON.parse(storedData);
-  retrievedArray.push(leaderboard);
-  var jsonString = JSON.stringify(retrievedArray);
+  } else {
+    var storedData = localStorage.getItem("topScores");
+    var retrievedArray = JSON.parse(storedData);
+    retrievedArray.push(leaderboard);
+    var jsonString = JSON.stringify(retrievedArray);
     localStorage.setItem("topScores", jsonString);
   }
   toggleGUI(lboard);
@@ -256,17 +255,17 @@ scoreSubmit.addEventListener("click", function () {
 
 //Display highscore screen
 SoR.addEventListener("click", function () {
+  var container = document.querySelector("#list-container");
   if (SoR.dataset.state === "reset") {
     localStorage.clear();
-    container.innerHTML ="";
+    container.innerHTML = "";
   } else {
-
     var storedData = localStorage.getItem("topScores");
     var retrievedArray = JSON.parse(storedData);
 
-    var container = document.querySelector("#list-container");
+   
     toggleGUI(container);
-    
+
     var listHTML = "<ul>";
 
     if (retrievedArray != null) {
@@ -283,7 +282,8 @@ SoR.addEventListener("click", function () {
       listHTML += "</ul>";
       container.innerHTML = listHTML;
     }
-
+    playMenu.textContent = "Menu";
+    playMenu.dataset.state = "menu";
     SoR.dataset.state = "reset";
     SoR.textContent = "Reset Scores";
   }
