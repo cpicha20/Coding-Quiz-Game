@@ -249,6 +249,6 @@ const retrievedArray = JSON.parse(storedData);
 console.log(retrievedArray);
 
 
-})
+});
 
 playMenu.addEventListener("click", playGame);
