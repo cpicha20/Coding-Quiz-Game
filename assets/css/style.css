@@ -50,31 +50,6 @@ body{
     
 }
 
-.naviBtn{
-    width: 200px;
-    margin-right: 20px;
-    margin-top: 9px;
-    /* margin-left: 45%; */
-    text-align: center;
-    padding: 10px 10px;
-    background-color: white;
-    color: black;
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: larger;
-    border-radius: 20px;
-    border-style: inset;
-    border-color: blueviolet;
-}
-
-.naviBtn:hover{
-    background-color: blueviolet;
-    color: azure;
-}
-
-#leaderboard{
-    display: none;
-}
-
 
 
 .answer {
@@ -98,3 +73,53 @@ body{
     background-color: blueviolet;
     color: azure;
 }
+
+#leaderboard{
+    display: none;
+    margin-top: 10px;
+    
+}
+
+input{
+ margin-bottom: 10px;
+
+}
+
+#submit{
+    width: 100px;
+    margin-right: 20px;
+    margin-top: 9px;
+    /* margin-left: 45%; */
+    text-align: center;
+    padding: 5px 8px;
+    background-color: white;
+    color: black;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: larger;
+    border-radius: 20px;
+    border-style: inset;
+    border-color: blueviolet;
+}
+
+
+.naviBtn{
+    width: 200px;
+    margin-right: 20px;
+    margin-top: 9px;
+    /* margin-left: 45%; */
+    text-align: center;
+    padding: 10px 10px;
+    background-color: white;
+    color: black;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: larger;
+    border-radius: 20px;
+    border-style: inset;
+    border-color: blueviolet;
+}
+
+.naviBtn:hover{
+    background-color: blueviolet;
+    color: azure;
+}
+

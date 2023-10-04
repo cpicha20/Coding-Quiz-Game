@@ -5,7 +5,8 @@ var mGUI = document.querySelector("#menuGUI");
 var timeDisplay = document.querySelector("#timeLeft");
 var lboard = document.querySelector("#leaderboard");
 var nameInput = document.querySelector("#nameEntry");
-var scoreSubmit= document.querySelector("#submit");
+var scoreSubmit = document.querySelector("#submit");
+var SoR = document.querySelector("#scoreOReset");
 
 var currentQuestion = 0;
 var questionCount = 0; //for finding out how many questions are left so we can end the game if we've done
@@ -87,7 +88,6 @@ var qaArray = [
   },
 ];
 
-
 //
 var leaderboard = [];
 
@@ -111,7 +111,7 @@ function countdown() {
     timer--;
     timeDisplay.textContent = timer;
     //check if time is 0 or if no questions remain
-    if (timer === 0 || currentQuestion === qaArray.length) {
+    if (timer <= 0 || currentQuestion === qaArray.length) {
       clearInterval(timerInterval);
       toggleGUI(gGUI);
       toggleGUI(mGUI);
@@ -120,7 +120,7 @@ function countdown() {
       mD.textContent = "Thanks for playing!";
       par.textContent = `You earned ${points} points!`;
     }
-  }, 1000);
+  }, 999);
 }
 
 //shuffling the qa Array
@@ -158,12 +158,13 @@ function playGame() {
     timeDisplay.textContent = timer;
     playMenu.textContent = "Menu";
     playMenu.dataset.state = "menu";
-  
+
     qaArray = shuffleQ(qaArray);
-    mD.textContent = qaArray[currentQuestion].question;
-    for (let i = 0; i < qaArray[currentQuestion].PossibleA.length; i++) {
-      document.querySelector(`#a${i + 1}`).textContent = qaArray[currentQuestion].PossibleA[i];
-    }
+    // mD.textContent = qaArray[currentQuestion].question;
+    // for (let i = 0; i < qaArray[currentQuestion].PossibleA.length; i++) {
+    //   document.querySelector(`#a${i + 1}`).textContent = qaArray[currentQuestion].PossibleA[i];
+    // }
+    nextQuestion();
   }
 }
 
@@ -173,34 +174,33 @@ for (var i = 1; i <= 4; i++) {
   thisAnswer.addEventListener("click", function (event) {
     //"if" correct answer check followed by wrong answer "else" check
     if (event.target.textContent === qaArray[currentQuestion].CorrectA) {
-      
       console.log("correct");
       document.querySelector("#resultMessage").textContent = "Thats Right!";
       if (timerInterval != null) {
         clearInterval(timerInterval);
       }
-      currentQuestion++;
       points = points + 10;
-      nextQuestion();
       eraseMsg();
     } else {
-      nextQuestion();
       console.log("wrong");
       document.querySelector("#resultMessage").textContent = "Thats Wrong.";
       if (timerInterval != null) {
         clearInterval(timerInterval);
       }
-      timer - 10;
+      timer = timer - 10;
       if (points != 0) {
         points = points - 5;
       }
-      currentQuestion++;
-      nextQuestion();
       eraseMsg();
     }
-
-    
-    console.log("Current Question: " + currentQuestion);
+    var x = currentQuestion + 1;
+    console.log(qaArray.length);
+    // console.log(x);
+    currentQuestion++;
+    console.log(currentQuestion);
+    if (currentQuestion != qaArray.length) {
+      nextQuestion();
+    }
   });
 }
 
@@ -216,13 +216,22 @@ function eraseMsg() {
 //next question
 function nextQuestion() {
   mD.textContent = qaArray[currentQuestion].question;
+
   for (let i = 0; i < qaArray[currentQuestion].PossibleA.length; i++) {
     document.querySelector(`#a${i + 1}`).textContent = qaArray[currentQuestion].PossibleA[i];
   }
 }
 
-scoreSubmit.addEventListener("click", function(){
-
-})
+scoreSubmit.addEventListener("click", function () {
+  var submission = {};
+  console.log(nameInput.value);
+  if (nameInput.value != "") {
+    submission.name = nameInput.value;
+    submission.score = points;
+  }
+  console.log(submission);
+  leaderboard.push(submission);
+  console.log(leaderboard);
+});
 
 playMenu.addEventListener("click", playGame);
