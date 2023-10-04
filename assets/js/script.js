@@ -6,7 +6,7 @@ var timeDisplay = document.querySelector("#timeLeft");
 var lboard = document.querySelector("#leaderboard");
 var nameInput = document.querySelector("#nameEntry");
 var scoreSubmit = document.querySelector("#submit");
-var SoR = document.querySelector("#scoreOReset");
+var SoR = document.querySelector("#scoreOrReset");
 
 var currentQuestion = 0;
 var questionCount = 0; //for finding out how many questions are left so we can end the game if we've done
@@ -232,6 +232,23 @@ scoreSubmit.addEventListener("click", function () {
   console.log(submission);
   leaderboard.push(submission);
   console.log(leaderboard);
+  leaderboard.sort((a, b) => b.score - a.score);  
+  const jsonString = JSON.stringify(leaderboard);
+  localStorage.setItem("topScores", jsonString);
+
 });
+
+SoR.addEventListener("click", function () {
+
+const storedData = localStorage.getItem("myData");
+
+
+const retrievedArray = JSON.parse(storedData);
+
+
+console.log(retrievedArray);
+
+
+})
 
 playMenu.addEventListener("click", playGame);
