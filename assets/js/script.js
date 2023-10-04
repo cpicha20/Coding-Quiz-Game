@@ -146,6 +146,7 @@ function playGame() {
     mD.textContent = title;
     playMenu.textContent = "Play";
     playMenu.dataset.state = "play";
+    
 
     if (lboard.dataset.state === "shown") {
       toggleGUI(lboard);
@@ -170,6 +171,8 @@ function playGame() {
     // }
     nextQuestion();
   }
+  SoR.dataset.state = "score";
+  SoR.textContent = "Highscores";
 }
 
 //Answer Selection click event
