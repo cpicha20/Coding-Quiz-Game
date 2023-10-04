@@ -1,16 +1,100 @@
 *{
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+
 }
 
+html{
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+body{
+    background-color: white;
+    width: 60%;
+    border: 9px solid blueviolet;
+    border-radius: 15px;
+    
+}
+
+#timeLeft{
+    display: none;
+    margin: 0px;
+    padding: 6px;
+    background-color: blueviolet;
+    color: white;
+}
 
 #gameGUI{
     display: none;
+    
+}
+
+.para{
+    background-color: blueviolet;
+    color: white;
+    margin: 0px;
+    padding: 5px;
+    font-size: x-large;
+    line-height: 1.5;
+}
+
+.mainDisplay{
+    margin: auto;
+    background-color: blueviolet;
+    color: white;
+    padding: 15px 0px;
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+    
+}
+
+.naviBtn{
+    width: 200px;
+    margin-right: 20px;
+    margin-top: 9px;
+    /* margin-left: 45%; */
+    text-align: center;
+    padding: 10px 10px;
+    background-color: white;
+    color: black;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: larger;
+    border-radius: 20px;
+    border-style: inset;
+    border-color: blueviolet;
+}
+
+.naviBtn:hover{
+    background-color: blueviolet;
+    color: azure;
 }
 
 #leaderboard{
     display: none;
 }
 
-#timeLeft{
-    display: none;
+
+
+.answer {
+    display: block;
+    width: 500px;
+    margin: auto;
+    margin-top: 9px;
+    /* margin-left: 45%; */
+    text-align: start;
+    padding: 20px 10px;
+    background-color: white;
+    color: black;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: larger;
+    border-radius: 20px;
+    border-style: inset;
+    border-color: blueviolet;
+}
+
+.answer:hover{
+    background-color: blueviolet;
+    color: azure;
 }

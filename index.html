@@ -7,28 +7,28 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-    <header >
+    <header>
       <p id="timeLeft" data-state="hidden"></p>
     </header>
     <main>
       <div class="mainDisplay">
         <h1 class="heading">Coding Quiz Game</h1>
-        <p class="para">Welcome to my game friend</p>
+        <p class="para">Welcome to my game, friend!<br> Try to answer as many questions as you can before the timer runs out!<br>
+            Wrong answers will deduct both points and time <br>
+        See if you can get the Highscore! </p>
       </div>
       <div id="gameGUI" data-state="hidden">
-        <section id="answerButtons">
-          <button class="answer" id="a1">1</button>
-          <button class="answer" id="a2">2</button>
-          <button class="answer" id="a3">3</button>
-          <button class="answer" id="a4">4</button>
-        </section>
+            <button class="answer" id="a1">1</button>
+            <button class="answer" id="a2">2</button>
+            <button class="answer" id="a3">3</button>
+            <button class="answer" id="a4">4</button>
       </div>
       <div id="menuGUI" data-state="shown">
         <section id="leaderboard" data-state="hidden">
-          <input type="text" />
+          <input id="nameEntry" type="text" />
           <button id="submit">submit</button>
         </section>
-        <section id="navButtons" >
+        <section id="navButtons">
           <button class="naviBtn" id="playMenu" data-state="play">Play</button>
           <button class="naviBtn" id="scoreOrReset">Highscore</button>
         </section>
