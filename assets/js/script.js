@@ -235,9 +235,9 @@ scoreSubmit.addEventListener("click", function () {
   if (nameInput.value != "") {
     submission.name = nameInput.value;
     submission.score = points;
-  }
-
+    toggleGUI(lboard);
   
+
   leaderboard.push(submission);
   leaderboard.sort((a, b) => b.score - a.score);
 
@@ -252,7 +252,8 @@ scoreSubmit.addEventListener("click", function () {
     var jsonString = JSON.stringify(retrievedArray);
     localStorage.setItem("topScores", jsonString);
   }
-  toggleGUI(lboard);
+  }
+
 });
 
 //Display highscore screen
