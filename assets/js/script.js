@@ -238,20 +238,22 @@ scoreSubmit.addEventListener("click", function () {
     toggleGUI(lboard);
   
 
+    leaderboard = localStorage.getItem("topScores");
+    leaderboard = JSON.parse(leaderboard);
+    if (saveArray === null) {
+      saveArray=[];
+    }
+
   leaderboard.push(submission);
   leaderboard.sort((a, b) => b.score - a.score);
 
-  //Checking in local storage if its empty 
-  if (localStorage.getItem("topScores") === null) {
-    var jsonString = JSON.stringify(leaderboard);
-    localStorage.setItem("topScores", jsonString);
-  } else {
-    var storedData = localStorage.getItem("topScores");
-    var retrievedArray = JSON.parse(storedData);
-    retrievedArray.push(leaderboard);
-    var jsonString = JSON.stringify(retrievedArray);
-    localStorage.setItem("topScores", jsonString);
-  }
+
+
+ 
+   var jsonString = JSON.stringify(leaderboard);
+   localStorage.setItem("topScores", jsonString);
+  
+  
   }
 
 });
@@ -265,7 +267,7 @@ SoR.addEventListener("click", function () {
   } else {
     var storedData = localStorage.getItem("topScores");
     var retrievedArray = JSON.parse(storedData);
-
+    console.log(retrievedArray);
    
     toggleGUI(container);
 
